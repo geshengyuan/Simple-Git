@@ -181,4 +181,267 @@
     三目运算符
         条件成立执行的表达式   if   条件   else   条件不成立执行的表达式
 
+#第五节 While循环
+     一，循环简介
+        1.1 循环的作用
+            让代码更高效的重复执行
+
+        1.2 循环的分类
+            while和for
+        
+    二，while的语法
+         while 条件:
+            条件成立重复执行的代码1
+            条件成立重复执行的代码2
+            ...... 
+
+            ```
+            i = 0
+            while i < 5:
+                print('xxx')
+                i += 1
+                print
+            ```
+            注意缩进
+
+    三， while的应用
+        应用一：计算1到100累加和
+            ```
+            i=1
+            result = 0
+            while i<= 100:
+                result = result + i
+                i += 1
+            print (result)
+
+        应用二：计算1到100偶数累加和
+            方法1
+            ```
+            i = 1
+            result = 0
+            while i <= 100
+                if i % 2 == 0:
+                    result += i
+                i += 1
+            print(result)
+
+            方法2
+            ```
+            i = 0
+            result = 0
+            while i <= 100:
+                result += i
+                i += 2
+            print(result)
+
+    四，break和continue
+        4，1 理解
+            break：终止此循环
+            continue： 推出当前一次循环继而执行下一次循环代码
+        4，1，1 情况一： break
+            ```
+            i = 1
+            while i <= 5:
+                if i == 4:
+                    print('吃饱了，不吃了’)
+                    break
+                print(f'吃了第{i}个苹果')
+                i += 1
+            ```  
+
+        4，1，2 情况二：continue
+            ```
+            i = 1
+            while 1 <= 5:
+                if i == 3:
+                    print('吃出一个大虫子，这个苹果不吃了')
+                    #如果使用continue，在continue之前一定要修改计数器，否则陷入死循环
+                    i += 1
+                    continue
+                print(f'吃了第{i}个苹果)    
+                i += 1
+
+    五，while循环嵌套
+        5，1 语法
+            while 条件1：
+                条件1 成立执行的代码
+                ......
+                while 条件2：
+                    条件2成立执行的代码
+                    ......
+
+    六，while循环嵌套应用
+        6，1 应用1：打印星号（正方形）
+        #重复打印5行星星
+        ```
+        j = 0
+        while j <= 4:
+            #一行星星的打印
+            1 = 0
+            while i <=4:
+                #一行内的星星不能换行，取消print默认结束符\n
+                print('*'，end='')
+                i += 1
+            #每行结束要换行，这里借助一个空的print，利用print默认结束符换行
+            print()
+            j += 1
+        ```
+
+        6，2 应用2：打印星号（三角形）
+        #重复打印5行星星
+        #j表示行号
+        j = 0
+        while j <= 4:
+            #一行星星的打印
+            i = 0
+            #i表示每行里面星星的个数，这个数字要和行号相等所以i要和j联动
+            while i <= j:
+                print('*',end='')
+                i += 1
+            print()
+            j += 1
+
+        6，3 九九乘法表
+            ```
+            j = 1
+            while j <= 9
+                i = 1
+                while i <= j:
+                    print(f'{i} * {j} = {i*j} * x',end='\t')
+                    i += 1
+                print()
+                j += 1
+
+#第六节，for循环
+    7,1 语法
+        ```
+        for 临时变量 in 序列：
+        重复执行的代码1
+        重复执行的代码2
+        ......
+        ```
+    7,2 快速体验
+        ```
+        str1 = 'abc'
+        for i in str1:
+            print(i)
+        ```
+    7,3 break
+    ```
+    str1 = 'abc'
+    for i = in str1:
+        if i == 'b':
+            print('遇到b不打印')
+            break
+        print(i)
+        ```
+
+    7,4 continue
+        ```
+        str1 = 'abc'
+        for 1 in str1:
+            if 1 == 'b':
+                print('遇到b不打印)
+                continue
+            print(i)
+
+八， else
+    循环可以和else配合使用，else下方缩进的代码指的是当循环正常结束之后要执行的代码
+    8，1 while... else
+        ```
+        while 条件：
+            条件成立重复执行的代码
+        else：
+            循环正常结束之后要执行的代码
+
+    8，1，3 退出循环的方式
+        break
+        ```
+        i = 1
+        while i <= 5:
+            if i == 3:
+                break
+            print('xxx')
+            i += 1
+        else:
+            print('xxx')
+        ```
+        *else值得是循环正常结束之后要执行的代码，如果是break种植循环的情况，else下方缩进的代码将不执行*
+
+        continue
+        ```
+        i = 1
+        while i <= 5:
+            if i == 3:
+                i += 1
+                break
+            print('xxx')
+            i += 1
+        else:
+            print('xxx')
+        ```              
+        *continue是退出当前一次循环，继续下一次循环，所以该循环在continue控制下是可以正常结束的，当循环结束后，则执行了else缩进的代码*
+
+    8，2 for...else
+        8，2，1 语法
+            for 临时变量 in 序列：
+                重复执行的代码
+                ...
+            else：
+                循环正常结束之后要执行的代码
+        8，2，2 示例
+            str = 'abc'
+            for i in str:
+                print(i)
+            else:
+                print('循环正常结束之后执行的代码')
+
+        8，2，3 退出循环的方式
+            1，break终止循环
+            ```
+            str1 = 'abc'
+            for i in str1:
+                if 1 == 'b':
+                    print('遇到b不打印')
+                    break
+                print(i)
+            else:
+                print('循环正常结束之后执行的代码')
+
+
+
+#课程：字符串
+    一，认识字符串
+        字符串是python中最常用的数据类型。我们一般使用i引号来创建字符串。创建字符串很简单，只要为变量分配一个值即可
+
+        注意：控制台显示结果为<class'str'>，即数据类型为str（字符串）。
+
+        1，1 字符串特征
+            *一对引号字符串
+                'x'或者"x"
+            *三引号字符串
+                '''x'''
+                """x"""
+                
+
+
+
+
+
+        
+
+                
+        
+        
+        
+        
+           
+
+    
+        
+            
+
+
+
+
 
